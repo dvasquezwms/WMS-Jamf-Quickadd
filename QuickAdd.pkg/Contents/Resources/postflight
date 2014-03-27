@@ -1,0 +1,23 @@
+#!/bin/sh
+
+####################################################
+## Create the configuration file at:
+## /Library/Preferences/com.jamfsoftware.jamf.plist
+####################################################
+/usr/sbin/jamf createConf -url 'https://jss.wms.com:8443/' -k
+
+####################################################
+## Turn on SSH
+####################################################
+/usr/sbin/jamf startSSH
+
+####################################################
+## Run enroll
+####################################################
+/usr/sbin/jamf enroll -invitation 109429929202633842293491455674362931150
+
+enrolled=$?
+
+
+
+exit $enrolled
